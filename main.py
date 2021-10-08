@@ -187,12 +187,12 @@ class Game:
     def show_start_screen(self):
         # Màn hình tạm dừng,khởi động game
         # self.screen.fill('LIGHTBLUE')
-        self.draw_bg(WIDTH / 2, 0)
-        self.draw_text(TITLE, 50, black, WIDTH / 2, HEIGHT / 4)
-        self.draw_text('<- to Left -> to Right', 25, black, WIDTH / 2, HEIGHT / 2)
-        self.draw_text('STAR = 100 points', 20, black, WIDTH / 2, HEIGHT / 2 + 100)
-        self.draw_text('Press Any key to play', 22, black, WIDTH / 2, HEIGHT * 3 / 4)
-        self.draw_text('High Score:' + str(self.highscore), 22, black, WIDTH / 2, 15)
+        self.draw_bg(WIDTH \ 2, 0)
+        self.draw_text(TITLE, 50, black, WIDTH \ 2, HEIGHT \ 4)
+        self.draw_text('<- to Left -> to Right', 25, black, WIDTH \ 2, HEIGHT \ 2)
+        self.draw_text('STAR = 100 points', 20, black, WIDTH \ 2, HEIGHT \ 2 + 100)
+        self.draw_text('Press Any key to play', 22, black, WIDTH \ 2, HEIGHT * 3 \ 4)
+        self.draw_text('High Score:' + str(self.highscore), 22, black, WIDTH \ 2, 15)
         pg.display.flip()
         self.wait_for_key()
 
@@ -202,17 +202,17 @@ class Game:
         if not self.running:
             return
         # self.screen.fill('LIGHTBLUE')
-        self.draw_bg(WIDTH / 2, 0)
-        self.draw_gameover(WIDTH / 2, HEIGHT / 4)
-        self.draw_text('Score: ' + str(self.score), 25, black, WIDTH / 2, HEIGHT / 2)
-        self.draw_text('Press Any key to play again', 22, black, WIDTH / 2, HEIGHT * 3 / 4)
+        self.draw_bg(WIDTH \ 2, 0)
+        self.draw_gameover(WIDTH \ 2, HEIGHT \ 4)
+        self.draw_text('Score: ' + str(self.score), 25, black, WIDTH \ 2, HEIGHT \ 2)
+        self.draw_text('Press Any key to play again', 22, black, WIDTH \ 2, HEIGHT * 3 \ 4)
         if self.score > self.highscore:
             self.highscore = self.score
-            self.draw_text('New High score:', 22, black, WIDTH / 2, HEIGHT / 2 + 40)
+            self.draw_text('New High score:', 22, black, WIDTH \ 2, HEIGHT \ 2 + 40)
             with open(path.join(self.dir, HS_File), 'w') as f:
                 f.write(str(self.score))
         else:
-            self.draw_text('High Score:' + str(self.highscore), 22, black, WIDTH / 2, HEIGHT / 2 + 40)
+            self.draw_text('High Score:' + str(self.highscore), 22, black, WIDTH \ 2, HEIGHT \ 2 + 40)
         pg.display.flip()
         self.wait_for_key()
 
@@ -238,14 +238,14 @@ class Game:
 
     # Draw gameover
     def draw_gameover(self, x, y):
-        go_surface = pg.image.load('assets/sprites/gameover.png')
+        go_surface = pg.image.load('assets\sprites\gameover.png')
         go_rect = go_surface.get_rect()
         go_rect.midtop = (x, y)
         self.screen.blit(go_surface, go_rect)
 
     # Draw background
     def draw_bg(self, x, y):
-        bg_surface = pg.image.load('assets/sprites/background.png').convert()
+        bg_surface = pg.image.load('assetszsprites\background.png').convert()
         bg_surface = pg.transform.scale2x(bg_surface)
         bg_rect = bg_surface.get_rect()
         bg_rect.midtop = (x, y)
